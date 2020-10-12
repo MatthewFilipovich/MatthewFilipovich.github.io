@@ -1,7 +1,7 @@
 let images = ["images/sanjuan.jpg", "images/sondel.jpg", "images/scotland.jpg", "images/croatia.jpg",
-                "images/georgianbay.jpg", "images/sanfran.jpg", "images/shire.jpg", "images/austria.jpg"];
-let imageLocations = ["San Juan Del Sur, Nicaragua", "Sondel, Netherlands", "Pentland Hills, Scotland", "Makarska, Croatia", 
-                "Georgian Bay, Canada", "San Francisco, United States", "The Shire, Eriador", "Kitzbühel, Austria" ];
+    "images/georgianbay.jpg", "images/ometepe.jpg", "images/sanfran.jpg", "images/shire.jpg", "images/austria.jpg"];
+let imageLocations = ["San Juan Del Sur, Nicaragua", "Sondel, Netherlands", "Pentland Hills, Scotland", "Makarska, Croatia",
+    "Georgian Bay, Canada", "Ometepe Island, Nicaragua", "San Francisco, United States", "The Shire, Eriador", "Kitzbühel, Austria"];
 var i = Math.floor(Math.random() * images.length);
 updateImage()
 
