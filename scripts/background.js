@@ -1,5 +1,5 @@
-let images = ["images/ometepe.jpg", "images/space.jpg"];
-let imageLocations = ["Nicaragua", "space"];
+let images = ["images/ometepe.jpg", "images/sondel.jpg"];
+let imageLocations = ["Ometepe, Nicaragua", "Amsterdam, Netherlands"];
 var i = Math.floor(Math.random() * images.length);
 updateImage()
 
