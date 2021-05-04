@@ -1,256 +1,304 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Matthew Filipovich</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Matthew Filipovich">
-    <meta name="description" content="Personal Website">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Matthew Filipovich" />
+    <meta name="description" content="Personal Website" />
     <meta property="og:title" content="Matthew Filipovich" />
     <meta property="og:type" content="Person Website" />
     <meta property="og:url" content="https://matthewfilipovich.ca/" />
-    <meta property="og:image:url" content="https://matthewfilipovich.ca/images/logo.png" />
+    <meta
+      property="og:image:url"
+      content="https://matthewfilipovich.ca/images/logo.png"
+    />
     <meta property="og:description" content="Personal Website" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
-        body,
-        html {
-            height: 100%;
-            font-family: 'Raleway', sans-serif;
-        }
+      body,
+      html {
+        height: 100%;
+        font-family: "Raleway", sans-serif;
+      }
 
-        .background {
-            min-height: 100%;
-            background-position: center;
-            background-size: cover;
-            -webkit-transition: background-image 0.5s;
-            transition: background-image 0.5s;
-        }
+      .background {
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+        -webkit-transition: background-image 0.5s;
+        transition: background-image 0.5s;
+      }
 
-        .w3-display-left,
-        .w3-display-right {
-            cursor: pointer
-        }
+      .w3-display-left,
+      .w3-display-right {
+        cursor: pointer;
+      }
 
+      .title {
+        font-family: "Playfair Display", serif;
+        cursor: default;
+        font-size: 64px;
+      }
+
+      .brs {
+        display: block;
+        content: "";
+        margin: 10px;
+      }
+
+      * span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 1s;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: 0.5s ease;
+        cursor: default;
+        font-size: 17px;
+      }
+
+      .container:hover .overlay {
+        opacity: 1;
+      }
+
+      .btlink {
+        font-size: 20px;
+      }
+
+      .imgbtn:hover {
+        background-color: white;
+        transition: 0.2 ease;
+        color: black;
+      }
+
+      @media screen and (max-width: 700px) {
         .title {
-            font-family: 'Playfair Display', serif;
-            cursor: default;
-            font-size: 64px;
-        }
-
-        .brs {
-            display: block;
-            content: "";
-            margin: 10px;
-        }
-
-        * span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 1s;
-        }
-
-        .container {
-            position: relative;
-            width: 100%;
+          font-size: 9vw;
         }
 
         .overlay {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            width: 100%;
-            opacity: 0;
-            transition: .5s ease;
-            cursor: default;
-            font-size: 17px;
-        }
-
-        .container:hover .overlay {
-            opacity: 1;
+          font-size: 2.5vw;
         }
 
         .btlink {
-            font-size: 20px
+          font-size: 4vw;
+        }
+
+        * span {
+          transition: 0s;
         }
 
         .imgbtn:hover {
-            background-color: white;
-            transition: .2 ease;
-            color: black;
+          background-color: transparent;
+          color: white;
+          opacity: 0.5;
         }
+      }
 
-        @media screen and (max-width: 700px) {
-            .title {
-                font-size: 9vw
-            }
+      .carousel {
+        z-index: -99;
+        opacity: 1 !important;
+      }
 
-            .overlay {
-                font-size: 2.5vw;
-            }
+      .carousel .item {
+        position: fixed;
+        opacity: 0;
+        left: 0 !important;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: opacity 0.5s;
+        -moz-transition: opacity 0.5s;
+        -ms-transition: opacity 0.5s;
+        -o-transition: opacity 0.5s;
+        transition: opacity 0.5s;
 
-            .btlink {
-                font-size: 4vw;
-            }
+        background-size: cover;
+        -moz-background-size: cover;
+        background-position: center;
+        font-family: "Playfair Display", serif;
+        font-style: normal;
+        color: "black";
+        cursor: default;
+        font-size: 20px;
+      }
 
-            * span {
-                transition: 0s;
-            }
+      .one {
+        background: url(images/delsur.jpg);
+      }
 
-            .imgbtn:hover {
-                background-color: transparent;
-                color: white;
-                opacity: 0.5;
-            }
-        }
+      .two {
+        background: url(images/sondel.jpg);
+      }
 
-        .carousel {
-            z-index: -99;
-            opacity: 1 !important;
-        }
+      .three {
+        background: url(images/scotland.jpg);
+      }
 
-        .carousel .item {
-            position: fixed;
-            opacity: 0;
-            left: 0 !important;
-            width: 100%;
-            height: 100%;
-            -webkit-transition: opacity 0.5s;
-            -moz-transition: opacity 0.5s;
-            -ms-transition: opacity 0.5s;
-            -o-transition: opacity 0.5s;
-            transition: opacity 0.5s;
+      .four {
+        background: url(images/croatia.jpg);
+      }
 
-            background-size: cover;
-            -moz-background-size: cover;
-            background-position: center;
-            font-family: 'Playfair Display', serif;
-            font-style: normal;
-            color: 'black';
-            cursor: default;
-            font-size: 20px
-        }
+      .five {
+        background: url(images/georgianbay.jpg);
+      }
 
-        .one {
-            background: url(images/delsur.jpg);
-        }
+      .six {
+        background: url(images/ometepe.jpg);
+      }
 
-        .two {
-            background: url(images/sondel.jpg);
-        }
+      .seven {
+        background: url(images/sanfran.jpg);
+      }
 
-        .three {
-            background: url(images/scotland.jpg);
-        }
+      .eight {
+        background: url(images/theshire.jpg);
+      }
 
-        .four {
-            background: url(images/croatia.jpg);
-        }
+      .nine {
+        background: url(images/austria.jpg);
+      }
 
-        .five {
-            background: url(images/georgianbay.jpg);
-        }
-
-        .six {
-            background: url(images/ometepe.jpg);
-        }
-
-        .seven {
-            background: url(images/sanfran.jpg);
-        }
-
-        .eight {
-            background: url(images/theshire.jpg);
-        }
-
-        .nine {
-            background: url(images/austria.jpg);
-        }
-
-        .carousel .active {
-            opacity: 1 !important;
-        }
+      .carousel .active {
+        opacity: 1 !important;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="myCarousel" class="carousel container slide">
-        <div class="carousel-inner">
-            <div class="active item one w3-display-topleft w3-padding w3-text-black">
-                San Juan Del Sur, Nicaragua<br>Dec 2019
-            </div>
-            <div class="item two w3-display-topleft w3-padding w3-text-black">
-                Sondel, Netherlands<br>May 2018
-            </div>
-            <div class="item three w3-display-topleft w3-padding w3-text-black">
-                Pentland Hills, Scotland<br>Sep 2020
-            </div>
-            <div class="item four w3-display-topleft w3-padding w3-text-black">
-                Makarska, Croatia<br>June 2018
-            </div>
-            <div class="item five w3-display-topleft w3-padding w3-text-black">
-                Georgian Bay, Canada<br>July 2018
-            </div>
-            <div class="item six w3-display-topleft w3-padding w3-text-black">
-                Ometepe Island, Nicaragua<br>Dec 2019
-            </div>
-            <div class="item seven w3-display-topleft w3-padding w3-text-black">
-                San Francisco, United States<br>July 2019
-            </div>
-            <div class="item eight w3-display-topleft w3-padding w3-text-black">
-                The Shire, Eriador (Scotland)<br>Sep 2020
-            </div>
-            <div class="item nine w3-display-topleft w3-padding w3-text-black">
-                Kitzbühel, Austria<br>May 2018
-            </div>
+      <div class="carousel-inner">
+        <div
+          class="active item one w3-display-topleft w3-padding w3-text-black"
+        >
+          San Juan Del Sur, Nicaragua<br />Dec 2019
         </div>
+        <div class="item two w3-display-topleft w3-padding w3-text-black">
+          Sondel, Netherlands<br />May 2018
+        </div>
+        <div class="item three w3-display-topleft w3-padding w3-text-black">
+          Pentland Hills, Scotland<br />Sep 2020
+        </div>
+        <div class="item four w3-display-topleft w3-padding w3-text-black">
+          Makarska, Croatia<br />June 2018
+        </div>
+        <div class="item five w3-display-topleft w3-padding w3-text-black">
+          Georgian Bay, Canada<br />July 2018
+        </div>
+        <div class="item six w3-display-topleft w3-padding w3-text-black">
+          Ometepe Island, Nicaragua<br />Dec 2019
+        </div>
+        <div class="item seven w3-display-topleft w3-padding w3-text-black">
+          San Francisco, United States<br />July 2019
+        </div>
+        <div class="item eight w3-display-topleft w3-padding w3-text-black">
+          The Shire, Eriador (Scotland)<br />Sep 2020
+        </div>
+        <div class="item nine w3-display-topleft w3-padding w3-text-black">
+          Kitzbühel, Austria<br />May 2018
+        </div>
+      </div>
     </div>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('.carousel').carousel('pause');
-        });
+      $(document).ready(function () {
+        $(".carousel").carousel("pause");
+      });
     </script>
 
-    <div class="background w3-display-container w3-animate-opacity w3-text-white" id=background>
-        <div class="w3-display-topleft w3-padding w3-text-black" id="location"></div>
-        <div class="w3-display-middle">
-            <div class="container">
-                <div class="w3-center w3-animate-top title ">Matthew&nbsp;Filipovich</div>
-                <div class="overlay w3-light-grey w3-round w3-center w3-middle w3-padding">Welcome! I am an Engineering
-                    Physics
-                    graduate from Queen's University and am currently pursuing a master's degree in Neuromorphic
-                    Photonics and Machine Learning.</div>
-            </div>
-            <hr class="w3-border-grey" style="margin:auto;width:40%;border-width: 1px;">
-            <br class="brs">
-            <div class="w3-row w3-center">
-                <a target="_blank" href="https://www.linkedin.com/in/matthewfilipovich/"
-                    class="w3-center w3-button w3-round w3-ripple w3-white w3-hover-blue btlink"><span>LinkedIn</span></a>
-                &nbsp;&nbsp;<a target="_blank" href="https://github.com/MatthewFilipovich"
-                    class="w3-center w3-button w3-round w3-ripple w3-white w3-hover-teal btlink"><span>GitHub</span></a>
-                &nbsp;&nbsp;<a href="research.html"
-                    class="w3-center w3-button w3-round w3-ripple w3-white w3-hover-blue-gray btlink"><span>Research</span></a>
-            </div>
+    <div
+      class="background w3-display-container w3-animate-opacity w3-text-white"
+      id="background"
+    >
+      <div
+        class="w3-display-topleft w3-padding w3-text-black"
+        id="location"
+      ></div>
+      <div class="w3-display-middle">
+        <div class="container">
+          <div class="w3-center w3-animate-top title">
+            Matthew&nbsp;Filipovich
+          </div>
+          <div
+            class="overlay w3-light-grey w3-round w3-center w3-middle w3-padding"
+          >
+            Welcome! I am an Engineering Physics graduate from Queen's
+            University and am currently pursuing a master's degree in
+            Neuromorphic Photonics and Machine Learning.
+          </div>
         </div>
+        <hr
+          class="w3-border-grey"
+          style="margin: auto; width: 40%; border-width: 1px"
+        />
+        <br class="brs" />
+        <div class="w3-row w3-center">
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/matthewfilipovich/"
+            class="w3-center w3-button w3-round w3-ripple w3-white w3-hover-blue btlink"
+            ><span>LinkedIn</span></a
+          >
+          &nbsp;&nbsp;<a
+            target="_blank"
+            href="https://github.com/MatthewFilipovich"
+            class="w3-center w3-button w3-round w3-ripple w3-white w3-hover-teal btlink"
+            ><span>GitHub</span></a
+          >
+          &nbsp;&nbsp;<a
+            href="research.html"
+            class="w3-center w3-button w3-round w3-ripple w3-white w3-hover-blue-gray btlink"
+            ><span>Research</span></a
+          >
+        </div>
+      </div>
 
-        <a class="imgbtn w3-display-left w3-padding w3-xlarge w3-round carousel-control-prev" href="#myCarousel"
-            role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon sr-only" aria-hidden="true">&#10094;</span></a>
-        <a class="imgbtn w3-display-right w3-padding w3-xlarge w3-round carousel-control-prev" href="#myCarousel"
-            role="button" data-slide="next">
-            <span class="carousel-control-next-icon sr-only" aria-hidden="true">&#10095;</span></a>
+      <a
+        class="imgbtn w3-display-left w3-padding w3-xlarge w3-round carousel-control-prev"
+        href="#myCarousel"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon sr-only" aria-hidden="true"
+          >&#10094;</span
+        ></a
+      >
+      <a
+        class="imgbtn w3-display-right w3-padding w3-xlarge w3-round carousel-control-prev"
+        href="#myCarousel"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon sr-only" aria-hidden="true"
+          >&#10095;</span
+        ></a
+      >
     </div>
-</body>
-
+  </body>
 </html>
